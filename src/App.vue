@@ -1,6 +1,41 @@
 <!-- the script is where the js code goes -->
 <script>
+  import { ref } from "vue";
+     export default {
+  setup() {
 
+
+    // Define variables and constants
+    const dollaramount = ref(0);
+    const mainColor = ref('');
+    const newText = ref('');
+    const mainContent = ref('Main');
+
+
+    // Define functions
+    function updatedollaramount() {
+      dollaramount.value++;
+    }
+
+    function playMoneySound() {
+        const audio = new Audio('/money-sound.mp3');
+        audio.play();
+    }
+
+    function handleButtonClick() {
+        updatedollaramount();
+        playMoneySound();
+    }
+
+    function addTextToMain() {
+      mainContent.value += ` ${newText.value}`;
+      newText.value = ''; // Clear the input field
+    }
+
+    // Return variables and functions to use in the template
+    return { dollaramount, handleButtonClick, mainColor, newText, addTextToMain, mainContent };
+  }
+}
 
 
 </script>
